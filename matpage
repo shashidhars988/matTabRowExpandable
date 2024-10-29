@@ -137,6 +137,22 @@ export class MainComponent {
 
     return pages;
   }
+
+================================================
+  <ng-container *ngFor="let page of displayedPageNumbers">
+    <ng-container *ngIf="page === '...'">
+      <!-- Ellipsis -->
+      <span class="ellipsis">...</span>
+    </ng-container>
+    <ng-container *ngIf="page !== '...'">
+      <!-- Page Number Button -->
+      <button mat-button 
+              [color]="pageIndex === page ? 'primary' : 'default'" 
+              (click)="changePage(page as number)">
+        {{ (page as number) + 1 }}
+      </button>
+    </ng-container>
+  </ng-container>
 ==========================================
 ========================================================
 
