@@ -110,7 +110,33 @@ export class MainComponent {
     // Fetch new data based on newPageIndex
   }
 }
+============================================
+  get displayedPageNumbers(): (number | string)[] {
+    const pages: (number | string)[] = [];
+    const totalPages = this.totalPages;
 
+    // If there are fewer than 7 pages, show all page numbers
+    if (totalPages <= 7) {
+      for (let i = 0; i < totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Add the first 4 pages
+      for (let i = 0; i < 4; i++) {
+        pages.push(i);
+      }
+
+      // Add ellipsis if there are pages between first 4 and last 2
+      if (this.pageIndex < totalPages - 4) {
+        pages.push('...');
+      }
+
+      // Add the last 2 pages
+      pages.push(totalPages - 2, totalPages - 1);
+    }
+
+    return pages;
+  }
 ==========================================
 ========================================================
 
